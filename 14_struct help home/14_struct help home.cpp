@@ -18,6 +18,14 @@ void print(Fract obj)
     cout << obj.num << "/" << obj.denum;
 }
 
+struct Rect {
+    int x, y;
+    double width, height;
+};
+void OffsetX(Rect obj, int offset)
+{
+    obj.x += offset;
+}
 // 1/3 + 2/5 
 // 1 * 5 / 3 * 5 +2 * 3 / 5 * 3
 // 5/15 + 6/15
@@ -29,7 +37,14 @@ Fract sum(Fract one, Fract two) {
     tmp.num = (one.num * two.denum) + (two.num * one.denum);
     return tmp;
 }
-
+Fract mult(Fract one, Fract two) {
+    Fract tmp{ one.num * two.num, one.denum * two.denum };
+    return tmp;
+}
+Fract divid(Fract one, Fract two) {
+    Fract tmp{ one.num * two.denum , two.num * one.denum };
+    return tmp;
+}
 Fract toShort(Fract& obj)
 {
     int end = obj.num < obj.denum ? obj.num : obj.denum;
